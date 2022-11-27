@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* container, navbar, logo */
+/* header, barra, logo */
+
+.header {
+    width: 100%;
+    height: 90px;
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.barra {
+    width: 97%;
+    margin: auto;
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.barra ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.barra ul li a {
+    text-decoration: none;
+    /* poner color amarillo o azul ? */
+    color: #07527b;
+    /* agregar font sin se quiere cambiar */
+    font-size: 20px;
+}
+
+/* hacer que con el hover se pongan amarillas maybe ??? */
