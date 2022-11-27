@@ -1,3 +1,9 @@
+<?php
+    if (isset($_SESSION['usuario'])) {
+        header("location: /pagina-prinicipal.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +30,18 @@
         </form>
         <?php
             include("registrar.php");
+        ?>
+    </div>
+    <div class="inicio">
+        <!-- Formulario a completar -->
+        <form method="post">
+            <h1>Inicia sesión en tu cuenta</h1>
+            <input type="text" name="mail" placeholder="Ingresa tu dirección de mail">
+            <input type="text" name="clave" placeholder="Ingresa tu contraseña">
+            <input type="submit" name="iniciar" />
+        </form>
+        <?php
+            include("iniciar.php");
         ?>
     </div>
 </body>

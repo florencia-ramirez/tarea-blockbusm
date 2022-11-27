@@ -3,22 +3,41 @@
 
     // Cuando se apreta el boton de enviar
     if (isset($_POST["registrar"])) {
+
        // Revisa que ninguno de los campos este vacio
         if (strlen($_POST["nombre"]) >= 1 && strlen($_POST["mail"]) >= 1 && strlen($_POST["descripcion"]) >= 1 && strlen($_POST["clave"]) >= 1) {
-            $nombre = trim($_POST["nombre"]);
-            $mail = trim($_POST["mail"]);
-            $clave = trim($_POST["clave"]);
-            $descripcion = trim($_POST["descripcion"]);
+            $nombre = $_POST["nombre"];
+            $mail = $_POST["mail"];
+            $clave = $_POST["clave"];
+            $descripcion = $_POST["descripcion"];
+
             // Se genera la consulta
             $consulta = "INSERT INTO usuarios(nombre, clave, mail, descripcion) VALUES ('$nombre', '$clave', '$mail', '$descripcion')";
-            $resultado = mysqli_query($conexion, $consulta);
-            if ($resultado) {
-                echo "Te has registrado correctamente";
+
+            //Verificar que no haya una cuenta existente con ese correo
+            $verificar_correo = mysqli_query($conexion, "SELECT * FROM usuarios WHERE mail = '$mail'");
+            if (mysqli_num_rows($verificar_correo) > 0) {
+                echo '
+                <script>
+                    alert("Este correo está asociado a una cuenta ya existente.");
+                    window.location = "inicio-registro.php";
+                </script>
+                ';
+                exit();
             }
             else {
-                echo "Ha ocurrido un error, inténtalo nuevamente";
+                $resultado = mysqli_query($conexion, $consulta);
+                if ($resultado) {
+                    // echo "Te has registrado correctamente";
+                    $_SESSION['usuario'] = $mail;
+                    header("location: pagina-principal.php");
+                }
+                else {
+                    echo "Ha ocurrido un error, inténtalo nuevamente";
+                }
             }
         }
+        // No se rellenaron todos los campos
         else {
             echo "Rellena todos los campos para poder registrarte";
         } 
