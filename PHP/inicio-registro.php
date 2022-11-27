@@ -18,6 +18,8 @@
             <h1>Únete a nosotros</h1>
             <input type="text" name="nombre" placeholder="Ingresa tu nombre completo">
             <input type="text" name="mail" placeholder="Ingresa tu dirección de mail">
+            <input type="text" name="clave" placeholder="Ingresa tu contraseña">
+            <input type="text" name="descripcion" placeholder="Ingrese una pequeña descripción">
             <input type="submit" name="registrar" />
         </form>
         <?php
