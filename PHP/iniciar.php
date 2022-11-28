@@ -4,15 +4,16 @@
     include 'conexion-bd.php';
 
     // Cuando se apreta el boton de enviar
-    if (isset($_POST["registrar"])) {
+    if (isset($_POST["iniciar"])) {
         $mail = $_POST["mail"];
         $clave = $_POST["clave"];
  
         //Comprobar que existan esos datos en la base
-        $validar_login = mysqli_query($conexion, "SELECT * FROM users WHERE mail = '$mail' and clave = '$clave'");
+        $validar_login = mysqli_query($conexion, "SELECT * FROM usuarios WHERE mail = '$mail' and clave = '$clave'");
         if (mysqli_num_rows($validar_login) > 0) {
+            echo "Iniciaste sesion correctamente";
             $_SESSION['usuario'] = $mail;
-            header("location: /pagina-principal.php");
+            header("location: pagina-principal.php");
         }
         else {
             echo '
