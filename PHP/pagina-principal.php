@@ -18,7 +18,7 @@
                 <li><a href="">Inicio</a></li>
                 <li><a href="">Mejores películas</a></li>
                 <li><a href="">Buscar</a></li>
-                <li><a href="inicio-registro.php">Perfil</a></li>
+                <li><a href="perfil.php">Perfil</a></li>
                 <li><a href="cerrar-sesion.php">Cerrar sesión</a></li>
             </ul>
         </div>
