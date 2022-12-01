@@ -32,7 +32,7 @@
                         Login
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form method="post">
                         <div class = "form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" class="form-control" name="mail" aria-describedby="emailHelp" placeholder="Ingresa tu dirección de mail">

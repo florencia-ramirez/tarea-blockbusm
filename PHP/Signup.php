@@ -33,7 +33,7 @@
                         Sign Up
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form method="post">
                         
                         <div class = "form-group">
                         <label for="exampleInputEmail1">Email</label>
