@@ -21,6 +21,7 @@
     <!-- automaticamente despues pase a mostrar el perfil maybe -->
     <img src="../IMAGES/logo v3.PNG" alt="Logo" width="8%">
     <div class="container">
+        <div class="row">
         <br/>
         <div class="row">
             <div class="col-md-4">
@@ -29,31 +30,45 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        Login
+                        Sign Up
                     </div>
                     <div class="card-body">
                         <form>
+                        
                         <div class = "form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" name="mail" aria-describedby="emailHelp" placeholder="Ingresa tu dirección de mail">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" class="form-control" name="mail"  placeholder="Ingresa tu dirección de mail">
                         </div>
+
+                        <div class = "form-group">
+                        <label for="examplename">Nombre</label>
+                        <input type="text" class="form-control" name="nombre"  placeholder="Ingresa tu nombre completo">
+                        </div>
+
+                        <div class = "form-group">
+                        <label for="exampledesc">Descripcion</label>
+                        <input type="text" class="form-control" name="descripcion"  placeholder="Ingrese una pequeña descripcion">
+                        </div>
+
                         <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" class="form-control" name="clave" placeholder="Ingresa tu contraseña">
                         </div>
                         
-                        <a href="Signup.php" class="badge badge-primary">No tienes cuenta? Únete a nosotros </a>
+                        <a href="inicio-registro.php" class="badge badge-primary">Ya tienes una cuenta? Entra al sitio! </a>
                         <br/>
-                        <button type="submit" name="iniciar" class="btn btn-primary">Entrar</button>
+                        <button type="submit"  name="registrar" class="btn btn-primary">Registrarse</button>
                         </form>
                         <?php
-                        include("iniciar.php");
+                        include("registrar.php");
                         ?>
                         
-                    </div>               
+                    </div>
+                    
                 </div>
             </div>
+            
         </div>
-    </div>
+    </div>   
 </body>
 </html>
