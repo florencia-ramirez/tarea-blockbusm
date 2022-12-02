@@ -1,9 +1,21 @@
-<?php include("cabeza.php"); ?>
+<?php 
+include("cabeza.php");
+include("conexion-bd.php");
+session_start();
+$mail = $_SESSION["usuario"];
+$sqlsentence = mysqli_query($conexion, "SELECT nombre FROM usuarios WHERE mail = '$mail'");
+$nombre = mysqli_fetch_column($sqlsentence);
+$sqlsentence = mysqli_query($conexion, "SELECT descripcion FROM usuarios WHERE mail = '$mail'");
+$descri = mysqli_fetch_column($sqlsentence);
+?>
 <div class="card mb-3">
-  <h3 class="card-header">Tu perfil</h3>
-  <img src="../IMAGES/blank-profile-picture.png" alt="icono" width="10%" height="20%" >
+  <h2 class="card-header">Tu Perfil</h2>
   <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h3 class="card-title"><?php echo $nombre?></h3>
+  </div>
+  <img src="../IMAGES/blank-profile-picture.png" alt="icono" width="10%" height="25%" >
+  <div class="card-body">
+    <p class="card-text"><?php echo $descri?></p>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Cras justo odio</li>
@@ -11,7 +23,7 @@
     <li class="list-group-item">Vestibulum at eros</li>
   </ul>
   <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Editar Cuenta</a>
     <a href="#" class="card-link">Another link</a>
   </div>
   <div class="card-footer text-muted">
