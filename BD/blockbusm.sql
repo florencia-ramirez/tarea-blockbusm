@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2022 a las 15:26:20
+-- Tiempo de generación: 04-12-2022 a las 00:24:12
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -20,6 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `blockbusm`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `favoritas`
+--
+
+CREATE TABLE `favoritas` (
+  `id` int(11) NOT NULL,
+  `usuario` varchar(50) DEFAULT NULL,
+  `pelicula` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -60,6 +72,44 @@ INSERT INTO `peliculas` (`nombre`, `genero`, `descripcion`, `disponibles`, `tota
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `rentadas`
+--
+
+CREATE TABLE `rentadas` (
+  `id` int(11) NOT NULL,
+  `usuario` varchar(50) DEFAULT NULL,
+  `pelicula` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reseñas`
+--
+
+CREATE TABLE `reseñas` (
+  `id` int(11) NOT NULL,
+  `usuario` varchar(50) DEFAULT NULL,
+  `pelicula` varchar(100) DEFAULT NULL,
+  `calificacion` int(11) DEFAULT NULL,
+  `texto` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `seguidos`
+--
+
+CREATE TABLE `seguidos` (
+  `id` int(11) NOT NULL,
+  `usuario` varchar(50) DEFAULT NULL,
+  `seguido` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -81,9 +131,29 @@ INSERT INTO `usuarios` (`nombre`, `clave`, `mail`, `saldo`, `seguidores`, `segui
 ('diego acevedo', '123', 'diego@gmail.com', 500, 0, 0, 'holaaaa'),
 ('flo :D', 'flo123', 'flo123@mail.com', 500, 0, 0, 'me gusta ver peliculas y dormir');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `id` int(11) NOT NULL,
+  `usuario` varchar(50) DEFAULT NULL,
+  `pelicula` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `favoritas`
+--
+ALTER TABLE `favoritas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_usuario_fav` (`usuario`),
+  ADD KEY `fk_pelicula_fav` (`pelicula`);
 
 --
 -- Indices de la tabla `peliculas`
@@ -92,10 +162,115 @@ ALTER TABLE `peliculas`
   ADD PRIMARY KEY (`nombre`);
 
 --
+-- Indices de la tabla `rentadas`
+--
+ALTER TABLE `rentadas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_usuario_rent` (`usuario`),
+  ADD KEY `fk_pelicula_rent` (`pelicula`);
+
+--
+-- Indices de la tabla `reseñas`
+--
+ALTER TABLE `reseñas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_usuario_res` (`usuario`),
+  ADD KEY `fk_pelicula_res` (`pelicula`);
+
+--
+-- Indices de la tabla `seguidos`
+--
+ALTER TABLE `seguidos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_usuario_seguidor` (`usuario`),
+  ADD KEY `fk_pelicula_seguido` (`seguido`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`mail`);
+
+--
+-- Indices de la tabla `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_usuario_wish` (`usuario`),
+  ADD KEY `fk_pelicula_wish` (`pelicula`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `favoritas`
+--
+ALTER TABLE `favoritas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `rentadas`
+--
+ALTER TABLE `rentadas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `reseñas`
+--
+ALTER TABLE `reseñas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `seguidos`
+--
+ALTER TABLE `seguidos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wishlist`
+--
+ALTER TABLE `wishlist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `favoritas`
+--
+ALTER TABLE `favoritas`
+  ADD CONSTRAINT `fk_pelicula_fav` FOREIGN KEY (`pelicula`) REFERENCES `peliculas` (`nombre`),
+  ADD CONSTRAINT `fk_usuario_fav` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`mail`);
+
+--
+-- Filtros para la tabla `rentadas`
+--
+ALTER TABLE `rentadas`
+  ADD CONSTRAINT `fk_pelicula_rent` FOREIGN KEY (`pelicula`) REFERENCES `peliculas` (`nombre`),
+  ADD CONSTRAINT `fk_usuario_rent` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`mail`);
+
+--
+-- Filtros para la tabla `reseñas`
+--
+ALTER TABLE `reseñas`
+  ADD CONSTRAINT `fk_pelicula_res` FOREIGN KEY (`pelicula`) REFERENCES `peliculas` (`nombre`),
+  ADD CONSTRAINT `fk_usuario_res` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`mail`);
+
+--
+-- Filtros para la tabla `seguidos`
+--
+ALTER TABLE `seguidos`
+  ADD CONSTRAINT `fk_pelicula_seguido` FOREIGN KEY (`seguido`) REFERENCES `usuarios` (`mail`),
+  ADD CONSTRAINT `fk_usuario_seguidor` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`mail`);
+
+--
+-- Filtros para la tabla `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD CONSTRAINT `fk_pelicula_wish` FOREIGN KEY (`pelicula`) REFERENCES `peliculas` (`nombre`),
+  ADD CONSTRAINT `fk_usuario_wish` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`mail`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
