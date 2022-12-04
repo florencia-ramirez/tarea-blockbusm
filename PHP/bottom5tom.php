@@ -1,7 +1,7 @@
 <?php
 include("cabeza.php");
 include("conexion-bd.php");
-$sql = "SELECT * FROM peliculas";
+$sql = "SELECT * FROM peliculas ORDER BY calUSMT asc LIMIT 5;";
 if($result = mysqli_query($conexion, $sql)){
     if(mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_array($result)){
@@ -12,7 +12,7 @@ if($result = mysqli_query($conexion, $sql)){
         <img class="card-img-top" src="<?php echo($row['imagen']);?>" alt="" style="height: auto; display: block; max-width: 100%;">
         <div class="card-body">
             <h4 class="card-title"><?php echo($row['nombre']); ?></h4>
-            <h6 class="card-text"><?php echo($row['genero']); ?></h6>           
+            <h6 class="card-text">Calificación usmTomatoes: <?php echo($row['calUSMT']); ?></h6>           
         </div>
     </div>
     <br/>

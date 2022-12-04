@@ -28,11 +28,14 @@
 					<li class="nav-item">
 						<a class="nav-link" href="perfil.php">Perfil</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="peliculas.php">Peliculas</a>
+					</li>
 					<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Top 5 Películas</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">Mejores Según usmTomatoes</a>
-						<a class="dropdown-item" href="#">Peores Según usmTomatoes </a>
+						<a class="dropdown-item" href="Top5tom.php">Mejores Según usmTomatoes</a>
+						<a class="dropdown-item" href="bottom5tom.php">Peores Según usmTomatoes </a>
 						<a class="dropdown-item" href="#">Con mayor cantidad de reseñas</a>
 						<a class="dropdown-item" href="#">Más rentadas según público</a>
 					</div>
