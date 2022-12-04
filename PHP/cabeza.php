@@ -6,6 +6,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../CSS/bootstrap.css" />
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	
 	<title>BLOCKBUSM</title>
 </head>
 
@@ -24,8 +28,14 @@
 					<li class="nav-item">
 						<a class="nav-link" href="perfil.php">Perfil</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="peliculas.php">Mejores Películas</a>
+					<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Top 5 Películas</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#">Mejores Según usmTomatoes</a>
+						<a class="dropdown-item" href="#">Peores Según usmTomatoes </a>
+						<a class="dropdown-item" href="#">Con mayor cantidad de reseñas</a>
+						<a class="dropdown-item" href="#">Más rentadas según público</a>
+					</div>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="cerrar-sesion.php">Cerrar Sesión</a>
