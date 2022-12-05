@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-12-2022 a las 00:24:12
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 05-12-2022 a las 21:07:51
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,14 @@ CREATE TABLE `favoritas` (
   `id` int(11) NOT NULL,
   `usuario` varchar(50) DEFAULT NULL,
   `pelicula` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `favoritas`
+--
+
+INSERT INTO `favoritas` (`id`, `usuario`, `pelicula`) VALUES
+(1, 'flo123@mail.com', 'Barbie y el castillo de diamantes');
 
 -- --------------------------------------------------------
 
@@ -52,7 +59,7 @@ CREATE TABLE `peliculas` (
   `cantRentada` int(11) NOT NULL DEFAULT 0,
   `calUSMT` int(11) NOT NULL,
   `imagen` varchar(100) NOT NULL DEFAULT '../IMAGES/POSTERS/'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `peliculas`
@@ -79,7 +86,7 @@ CREATE TABLE `rentadas` (
   `id` int(11) NOT NULL,
   `usuario` varchar(50) DEFAULT NULL,
   `pelicula` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -93,7 +100,7 @@ CREATE TABLE `reseñas` (
   `pelicula` varchar(100) DEFAULT NULL,
   `calificacion` int(11) DEFAULT NULL,
   `texto` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -105,7 +112,20 @@ CREATE TABLE `seguidos` (
   `id` int(11) NOT NULL,
   `usuario` varchar(50) DEFAULT NULL,
   `seguido` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `top5usmt`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `top5usmt` (
+`nombre` varchar(100)
+,`genero` varchar(50)
+,`imagen` varchar(100)
+,`calUSMT` int(11)
+);
 
 -- --------------------------------------------------------
 
@@ -121,7 +141,7 @@ CREATE TABLE `usuarios` (
   `seguidores` int(11) NOT NULL DEFAULT 0,
   `seguidos` int(11) NOT NULL DEFAULT 0,
   `descripcion` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -141,7 +161,38 @@ CREATE TABLE `wishlist` (
   `id` int(11) NOT NULL,
   `usuario` varchar(50) DEFAULT NULL,
   `pelicula` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `worst5usmt`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `worst5usmt` (
+`nombre` varchar(100)
+,`genero` varchar(50)
+,`imagen` varchar(100)
+,`calUSMT` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `top5usmt`
+--
+DROP TABLE IF EXISTS `top5usmt`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `top5usmt`  AS SELECT `peliculas`.`nombre` AS `nombre`, `peliculas`.`genero` AS `genero`, `peliculas`.`imagen` AS `imagen`, `peliculas`.`calUSMT` AS `calUSMT` FROM `peliculas` ORDER BY `peliculas`.`calUSMT` DESC LIMIT 0, 55  ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `worst5usmt`
+--
+DROP TABLE IF EXISTS `worst5usmt`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `worst5usmt`  AS SELECT `peliculas`.`nombre` AS `nombre`, `peliculas`.`genero` AS `genero`, `peliculas`.`imagen` AS `imagen`, `peliculas`.`calUSMT` AS `calUSMT` FROM `peliculas` ORDER BY `peliculas`.`calUSMT` ASC LIMIT 0, 55  ;
 
 --
 -- Índices para tablas volcadas
@@ -207,7 +258,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT de la tabla `favoritas`
 --
 ALTER TABLE `favoritas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `rentadas`
