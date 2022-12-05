@@ -15,7 +15,7 @@ if ($result = mysqli_query($conexion, $sql)) {
                         <h6 class="card-text">Calificación usmTomatoes: <?php echo ($row['calUSMT']); ?></h6>
                     </div>
                 </div>
-                <br />
+                <br/>
             </div>
 
 <?php   }

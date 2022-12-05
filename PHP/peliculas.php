@@ -15,6 +15,7 @@ if ($result = mysqli_query($conexion, $sql)) {
                         <h6 class="card-subtitle mb-2 text-muted"><?php echo ($row['genero']), " | ", ($row['duracion']), " minutos"; ?></h6>
                         <p class="card-text"><?php echo ($row['descripcion']); ?></p>
                         <p class="card-subtitle mb-2 text-muted"><?php echo "Reparto: ", ($row['reparto']); ?></p>
+                        <!-- Botones -->
                         <a type="button" class="btn btn-danger" href="favoritos.php"> <img src="../IMAGES/heart.svg" alt="" width="16" height="16"> </a>
                         <a type="button" class="btn btn-danger" href="wishlist.php"> <img src="../IMAGES/bookmark.svg" alt="" width="16" height="16"> </a>
                         <a type="button" class="btn btn-danger" href="rentar.php"> <img src="../IMAGES/shopping-cart.svg" alt="" width="16" height="16"> </a>

@@ -30,13 +30,13 @@ $cantr = mysqli_num_rows(mysqli_query($conexion, "SELECT * FROM reseñas WHERE u
 	</div>
 	<img src="../IMAGES/user.svg" alt="icono" width="10%" height="25%">
 	<div class="card-body">
+		<p class="card-subtitle text-muted"><?php echo "Seguidores: ", $row['seguidores'], " | Seguidos: ", $row['seguidos'] ?></p>
+		</br>
 		<p class="card-text"><?php echo $row['descripcion'] ?></p>
 	</div>
 	<ul class="list-group list-group-flush">
-		<li class="list-group-item">Tu Saldo: <?php echo $row['saldo'] ?></li>
-		<li class="list-group-item">Numero de seguidores: <?php echo $row['seguidores'] ?></li>
-		<li class="list-group-item">Numero de seguidos: <?php echo $row['seguidos'] ?></li>
-		<li class="list-group-item">Numero de reseñas: <?php echo $cantr ?></li>
+		<li class="list-group-item">Tu saldo actualmente: <?php echo $row['saldo'] ?></li>
+		<li class="list-group-item">Numero de reseñas hechas: <?php echo $cantr ?></li>
 	</ul>
 	<div class="card-body">
 		<a href="#" class="card-link">Editar Cuenta</a>
