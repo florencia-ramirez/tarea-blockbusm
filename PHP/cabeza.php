@@ -45,9 +45,9 @@
 					</li>
 
 				</ul>
-				<form class="d-flex">
-					<input class="form-control me-sm-2" type="text" placeholder="Buscar">
-					<button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+				<form class="d-flex" action="buscar.php" method="GET">
+					<input class="form-control me-sm-2" type="text" name="busqueda" placeholder="Buscar">
+					<input class="btn btn-secondary my-2 my-sm-0" type="submit" name="enviar" ></button>
 				</form>
 			</div>
 		</div>

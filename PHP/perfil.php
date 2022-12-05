@@ -16,8 +16,7 @@ if (!$result) {
     echo 'Could not run query: ' . mysqli_error($conexion);
     exit;
 }
-$row = mysqli_fetch_array($resuls);
-
+$row = mysqli_fetch_array($result);
 
 // Reseñas
 $cantr = mysqli_num_rows(mysqli_query($conexion, "SELECT * FROM reseñas WHERE usuario = '$mail'"));
@@ -26,11 +25,10 @@ $cantr = mysqli_num_rows(mysqli_query($conexion, "SELECT * FROM reseñas WHERE u
 <div class="card mb-4">
 	<h2 class="card-header">Tu Perfil</h2>
 </br>
-	<img src="../IMAGES/user.svg" alt="icono" width="10%" height="25%">
 	<div class="card-body">
 		<h3 class="card-title"><?php echo $row['nombre'] ?></h3>
 	</div>
-	<img src="../IMAGES/blank-profile-picture.png" alt="icono" width="10%" height="25%">
+	<img src="../IMAGES/user.svg" alt="icono" width="10%" height="25%">
 	<div class="card-body">
 		<p class="card-text"><?php echo $row['descripcion'] ?></p>
 	</div>
