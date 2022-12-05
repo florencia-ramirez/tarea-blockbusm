@@ -13,6 +13,10 @@ if ($result = mysqli_query($conexion, $sql)) {
                     <div class="card-body">
                         <h4 class="card-title"><?php echo ($row['nombre']); ?></h4>
                         <h6 class="card-text">Cantidad de reseñas: <?php echo ($row['cantReseñas']); ?></h6>
+                        <!-- Botones -->
+                        <a type="button" class="btn btn-danger" href="favoritos.php"> <img src="../IMAGES/heart.svg" alt="" width="16" height="16"> </a>
+                        <a type="button" class="btn btn-danger" href="wishlist.php"> <img src="../IMAGES/bookmark.svg" alt="" width="16" height="16"> </a>
+                        <a type="button" class="btn btn-danger" href="rentar.php"> <img src="../IMAGES/shopping-cart.svg" alt="" width="16" height="16"> </a>
                     </div>
                 </div>
                 <br />

@@ -13,7 +13,7 @@
         if (mysqli_num_rows($validar_login) > 0) {
             echo "Iniciaste sesion correctamente";
             $_SESSION['usuario'] = $mail;
-            header("location: pagina-principal.php");
+            header("location: peliculas.php");
         }
         else {
             echo '

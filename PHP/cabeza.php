@@ -23,22 +23,22 @@
 			<div class="collapse navbar-collapse" id="navbarColor02">
 				<ul class="navbar-nav me-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="pagina-principal.php">Inicio</a>
+						<a class="nav-link" href="peliculas.php">Películas</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="perfil.php">Perfil</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="peliculas.php">Peliculas</a>
+						<a class="nav-link" href="pocasunidades.php">Pocas unidades</a>
 					</li>
 					<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Top 5 Películas</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="Top5tom.php">Mejores Según usmTomatoes</a>
-						<a class="dropdown-item" href="bottom5tom.php">Peores Según usmTomatoes </a>
+						<a class="dropdown-item" href="bottom5tom.php">Peores Según usmTomatoes</a>
 						<a class="dropdown-item" href="top5resenas.php">Con mayor cantidad de reseñas</a>
 						<a class="dropdown-item" href="top5rentadas.php">Más rentadas según público</a>
 					</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="perfil.php">Perfil</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="cerrar-sesion.php">Cerrar Sesión</a>
