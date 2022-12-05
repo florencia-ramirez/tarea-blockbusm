@@ -2,7 +2,7 @@
     include("conexion-bd.php");
 
     // Cuando se apreta el boton
-    if (isset($_POST["favorito"])) {
+    if (isset($_POST["wishlist"])) {
 
        // Revisa que ninguno de los campos este vacio
         if (strlen($_POST["pelicula"]) >= 1 && strlen($_POST["mail"]) >= 1) {
@@ -10,15 +10,15 @@
             $mail = $_POST["mail"];
 
             // Se genera la consulta
-            $consulta = "INSERT INTO favoritas(usuario, pelicula) VALUES ('$mail', '$pelicula')";
+            $consulta = "INSERT INTO wishlist(usuario, pelicula) VALUES ('$mail', '$pelicula')";
 
             //Verificar que no haya una cuenta existente con ese correo
-            $verificar_correo = mysqli_query($conexion, "SELECT * FROM favoritas WHERE (usuario = '$mail' AND pelicula = '$pelicula')");
+            $verificar_correo = mysqli_query($conexion, "SELECT * FROM wishlist WHERE (usuario = '$mail' AND pelicula = '$pelicula')");
             if (mysqli_num_rows($verificar_correo) > 0) {
                 echo '
                 <script>
-                    alert("Ya se agregó esta película a su lista de favoritos");
-                    window.location = "favoritos.php";
+                    alert("Ya se agregó esta película a su wishlist");
+                    window.location = "wishlist.php";
                 </script>
                 ';
                 exit();

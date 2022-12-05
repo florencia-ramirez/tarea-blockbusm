@@ -38,9 +38,6 @@ $cantr = mysqli_num_rows(mysqli_query($conexion, "SELECT * FROM reseñas WHERE u
 		<li class="list-group-item">Tu saldo actualmente: <?php echo $row['saldo'] ?></li>
 		<li class="list-group-item">Numero de reseñas hechas: <?php echo $cantr ?></li>
 	</ul>
-	<div class="card-body">
-		<a href="#" class="card-link">Editar Cuenta</a>
-	</div>
 </div>
 
 

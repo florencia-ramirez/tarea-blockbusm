@@ -19,7 +19,7 @@
             echo '
                 <script>
                 alert("Usuario no existente, verifique los datos introducidos");
-                window.location = "pagina-principal.php";
+                window.location = "login.php";
                 </script>
             ';
             exit();

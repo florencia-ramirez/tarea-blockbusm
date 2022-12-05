@@ -12,7 +12,8 @@ if ($result = mysqli_query($conexion, $sql)) {
                     <img class="card-img-top" src="<?php echo ($row['imagen']); ?>" alt="" style="height: auto; display: block; max-width: 100%;">
                     <div class="card-body">
                         <h4 class="card-title"><?php echo ($row['nombre']); ?></h4>
-                        <h6 class="card-subtitle mb-2 text-muted"><?php echo ($row['genero']), " | ", ($row['duracion']), " minutos"; ?></h6>
+                        <h6 class="card-subtitle mb-2 text-muted"><?php echo ($row['genero']), " | ", ($row['duracion']), " minutos | ", ($row['disponibles']), " unidades"; ?> <p class="text-danger"> <strong> <?php echo "$", ($row['precio']); ?> </strong></p></h6>
+
                         <p class="card-text"><?php echo ($row['descripcion']); ?></p>
                         <p class="card-subtitle mb-2 text-muted"><?php echo "Reparto: ", ($row['reparto']); ?></p>
                         <!-- Botones -->

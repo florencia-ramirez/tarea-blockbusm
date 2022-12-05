@@ -36,8 +36,8 @@
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="Top5tom.php">Mejores Según usmTomatoes</a>
 						<a class="dropdown-item" href="bottom5tom.php">Peores Según usmTomatoes </a>
-						<a class="dropdown-item" href="#">Con mayor cantidad de reseñas</a>
-						<a class="dropdown-item" href="#">Más rentadas según público</a>
+						<a class="dropdown-item" href="top5resenas.php">Con mayor cantidad de reseñas</a>
+						<a class="dropdown-item" href="top5rentadas.php">Más rentadas según público</a>
 					</div>
 					</li>
 					<li class="nav-item">

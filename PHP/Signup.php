@@ -3,7 +3,7 @@ include("cabeza.php");
 
 if (isset($_SESSION['usuario'])) {
     header("location: /pagina-prinicipal.php");
-}
+    }
 ?>
                 <div class="col-md-4">
 
