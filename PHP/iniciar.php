@@ -11,7 +11,6 @@
         //Comprobar que existan esos datos en la base
         $validar_login = mysqli_query($conexion, "SELECT * FROM usuarios WHERE mail = '$mail' and clave = '$clave'");
         if (mysqli_num_rows($validar_login) > 0) {
-            echo "Iniciaste sesion correctamente";
             $_SESSION['usuario'] = $mail;
             header("location: peliculas.php");
         }
