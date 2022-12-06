@@ -6,14 +6,15 @@ INTEGRANTES:
 
 
 COSAS QUE NO SE IMPLEMENTARON:
-    - No se muestra quien tiene sesión iniciada en todo momento, solo se ve en el perfil.
+    - Se creó un procedimiento pero no se implementó.
+    - No se creó una función.
+    - Se puede rentar una película pero no se puede devolver.
     - No se implementó el seguimiento a otros usuarios.
-    - No se puede buscar el perfil de otra persona.    
-    - Se puede rentar una película pero no se descuenta del saldo, no disminuye la cantidad de unidades
-    disponibles, no aumenta la cantidad de veces que fue rentada.
-    - Se pueden rentar, agregar a favoritos, y agregar a wishlist las películas pero no se pueden quitar.
-    - No se implementaron las reseñas de las peliculas.
-    - No se creo la función y trigger.
-    - Se creo el procedimiento pero no se implementó.
-    - No se pueden editar los datos del perfil.
-    - La vista de las películas más rentadas no se hizo con cada público.
+    - No se puede buscar a otros usuarios en la barra de búsqueda.
+    - No se implementaron las reseñas de usuario.
+    - No se implementaron las funciones de eliminar, editar, o visualizar completamente la información
+    del usuario.
+    - No se pueden eliminar ni visualizar películas de la wishlist.
+    - No se pueden eliminar ni visualizar películas de la lista de favoritos.
+    - Al rentar una película no se descuenta el saldo, no disminuye la cantidad de unidades disponibles y
+    no aumenta la cantidad de veces que fue rentada.

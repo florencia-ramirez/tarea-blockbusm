@@ -19,6 +19,7 @@ $row = mysqli_fetch_array($result);
 
 // Reseñas
 $cantr = mysqli_num_rows(mysqli_query($conexion, "SELECT * FROM reseñas WHERE usuario = '$mail'"));
+$cantrent = mysqli_num_rows(mysqli_query($conexion, "SELECT * FROM rentadas WHERE usuario = '$mail'"));
 
 ?>
 <div class="card mb-4">
@@ -35,7 +36,8 @@ $cantr = mysqli_num_rows(mysqli_query($conexion, "SELECT * FROM reseñas WHERE u
 	</div>
 	<ul class="list-group list-group-flush">
 		<li class="list-group-item">Tu saldo actualmente: <?php echo $row['saldo'] ?></li>
-		<li class="list-group-item">Numero de reseñas hechas: <?php echo $cantr ?></li>
+		<li class="list-group-item">Número de reseñas hechas: <?php echo $cantr ?></li>
+		<li class="list-group-item">Número de películas rentadas actualmente: <?php echo $cantrent ?></li>
 	</ul>
 </div>
 

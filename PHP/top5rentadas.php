@@ -10,7 +10,7 @@ if ($result = mysqli_query($conexion, $sql)) {
         while ($row = mysqli_fetch_array($result)) {
 ?>
 
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="card border-primary mb-3">
                     <img class="card-img-top" src="<?php echo ($row['imagen']); ?>" alt="" style="height: auto; display: block; max-width: 100%;">
                     <div class="card-body">
