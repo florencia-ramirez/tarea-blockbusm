@@ -48,7 +48,11 @@
 				<?php 
 				include("conexion-bd.php");
 				session_start();
-				$mail = $_SESSION['usuario'];
+				if (!isset($_SESSION['usuario'])) {
+					$sesionu = "no se ha iniciado sesión";
+					
+				} else {
+					$mail = $_SESSION['usuario'];
 				$result = mysqli_query($conexion, "SELECT nombre FROM usuarios WHERE mail = '$mail'");
 				if (!$result) {
 	                $sesionu = "no se ha iniciado sesión";
@@ -56,6 +60,8 @@
 	                $sesionu = mysqli_fetch_column($result);
 	                $sesionu = "usuario actual: " . $sesionu;
                 }
+                }
+				
 				?>
 				<div class="d-flex flex-row-reverse">
 				<div class="order-md-3 p-2"><?php echo $sesionu ?></div>
