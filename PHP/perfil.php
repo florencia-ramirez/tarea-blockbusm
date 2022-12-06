@@ -39,6 +39,41 @@ $cantr = mysqli_num_rows(mysqli_query($conexion, "SELECT * FROM reseñas WHERE u
 	</ul>
 </div>
 
+<h1>Películas rentadas</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Nombre Pelicula</th>
+      <th scope="col">Fecha y hora de la renta</th>
+    </tr>
+  </thead>
+  <?php
+  $sql = "SELECT * FROM rentashistorial;";
+if ($result = mysqli_query($conexion, $sql)) {
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_array($result)) {
+			?>
+  <tbody>
+    
+    <tr class="table-Dark">
+      <th scope="row"></th>
+      <td><?php echo ($row['pelicula']); ?></td>
+      <td><?php echo ($row['fecha']); ?></td>
+    </tr>
+
+	<?php
+	}
+	mysqli_free_result($result);
+} else {
+	echo "No records matching your query were found.";
+}
+} else {
+echo "ERROR: Could not able to execute $sql. " . mysqli_error($conexion);
+}
+    ?>
+  </tbody>
+</table>
 
 
 <?php include("pie.php"); ?>
