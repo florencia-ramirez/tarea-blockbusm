@@ -45,6 +45,23 @@
 					</li>
 
 				</ul>
+				<?php 
+				include("conexion-bd.php");
+				session_start();
+				$mail = $_SESSION['usuario'];
+				$result = mysqli_query($conexion, "SELECT nombre FROM usuarios WHERE mail = '$mail'");
+				if (!$result) {
+	                $sesionu = "no se ha iniciado sesión";
+				} else {
+	                $sesionu = mysqli_fetch_column($result);
+	                $sesionu = "usuario actual: " . $sesionu;
+                }
+				?>
+				<div class="d-flex flex-row-reverse">
+				<div class="order-md-3 p-2"><?php echo $sesionu ?></div>
+				</div>
+				
+				
 				<form class="d-flex" action="buscar.php" method="GET">
 					<input class="form-control me-sm-2" type="text" name="busqueda" placeholder="Buscar">
 					<input class="btn btn-secondary my-2 my-sm-0" type="submit" name="enviar" ></button>
