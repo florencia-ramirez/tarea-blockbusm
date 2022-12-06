@@ -1,6 +1,6 @@
 <?php
     //Iniciar sesión y hacer la conexión con la base
-    session_start();
+    
     include 'conexion-bd.php';
 
     // Cuando se apreta el boton de enviar
