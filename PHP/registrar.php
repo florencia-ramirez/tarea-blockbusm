@@ -20,7 +20,7 @@
                 echo '
                 <script>
                     alert("Este correo está asociado a una cuenta ya existente.");
-                    window.location = "inicio-registro.php";
+                    window.location = "Signup.php";
                 </script>
                 ';
                 exit();
@@ -28,9 +28,13 @@
             else {
                 $resultado = mysqli_query($conexion, $consulta);
                 if ($resultado) {
-                    // echo "Te has registrado correctamente";
                     $_SESSION['usuario'] = $mail;
-                    header("location: pagina-principal.php");
+                    echo '
+                    <script>
+                        alert("Se ha creado con éxito el usuario, será redireccionado para que inicie sesión");
+                        window.location = "login.php";
+                    </script>
+                    ';
                 }
                 else {
                     echo "Ha ocurrido un error, inténtalo nuevamente";

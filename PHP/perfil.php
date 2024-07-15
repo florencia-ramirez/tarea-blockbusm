@@ -1,43 +1,81 @@
-<?php 
+<?php
 include("cabeza.php");
+
+if (!isset($_SESSION['usuario'])) {
+	header("location: login.php");
+	session_destroy();
+	die();
+}
 include("conexion-bd.php");
-session_start();
-$mail = $_SESSION["usuario"];
-$sqlsentence = mysqli_query($conexion, "SELECT nombre FROM usuarios WHERE mail = '$mail'");
-$nombre = mysqli_fetch_column($sqlsentence);
-$sqlsentence = mysqli_query($conexion, "SELECT descripcion FROM usuarios WHERE mail = '$mail'");
-$descri = mysqli_fetch_column($sqlsentence);
+$usuarios = "SELECT * FROM usuarios";
+$mail = $_SESSION['usuario'];
+
+$result = mysqli_query($conexion, "SELECT * FROM usuarios WHERE mail = '$mail'");
+if (!$result) {
+    echo 'Could not run query: ' . mysqli_error($conexion);
+    exit;
+}
+$row = mysqli_fetch_array($result);
+
+// Reseñas
+$cantr = mysqli_num_rows(mysqli_query($conexion, "SELECT * FROM reseñas WHERE usuario = '$mail'"));
+$cantrent = mysqli_num_rows(mysqli_query($conexion, "SELECT * FROM rentadas WHERE usuario = '$mail'"));
+
 ?>
-<div class="card mb-3">
-  <h2 class="card-header">Tu Perfil</h2>
-  <div class="card-body">
-    <h3 class="card-title"><?php echo $nombre?></h3>
-  </div>
-  <img src="../IMAGES/blank-profile-picture.png" alt="icono" width="10%" height="25%" >
-  <div class="card-body">
-    <p class="card-text"><?php echo $descri?></p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Editar Cuenta</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-  <div class="card-footer text-muted">
-    2 days ago
-  </div>
+<div class="card mb-4">
+	<h2 class="card-header">Tu Perfil</h2>
+</br>
+	<div class="card-body">
+		<h3 class="card-title"><?php echo $row['nombre'] ?></h3>
+	</div>
+	<img src="../IMAGES/user.svg" alt="icono" width="10%" height="25%">
+	<div class="card-body">
+		<p class="card-subtitle text-muted"><?php echo "Seguidores: ", $row['seguidores'], " | Seguidos: ", $row['seguidos'] ?></p>
+		</br>
+		<p class="card-text"><?php echo $row['descripcion'] ?></p>
+	</div>
+	<ul class="list-group list-group-flush">
+		<li class="list-group-item">Tu saldo actualmente: <?php echo $row['saldo'] ?></li>
+		<li class="list-group-item">Número de reseñas hechas: <?php echo $cantr ?></li>
+		<li class="list-group-item">Número de películas rentadas actualmente: <?php echo $cantrent ?></li>
+	</ul>
 </div>
-<div class="card">
-  <div class="card-body">
-    <h4 class="card-title">Card title</h4>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
+
+<h1>Películas rentadas</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Nombre Pelicula</th>
+      <th scope="col">Fecha y hora de la renta</th>
+    </tr>
+  </thead>
+  <?php
+  $sql = "SELECT * FROM rentashistorial;";
+if ($result = mysqli_query($conexion, $sql)) {
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_array($result)) {
+			?>
+  <tbody>
+    
+    <tr class="table-Dark">
+      <th scope="row"></th>
+      <td><?php echo ($row['pelicula']); ?></td>
+      <td><?php echo ($row['fecha']); ?></td>
+    </tr>
+
+	<?php
+	}
+	mysqli_free_result($result);
+} else {
+	echo "No records matching your query were found.";
+}
+} else {
+echo "ERROR: Could not able to execute $sql. " . mysqli_error($conexion);
+}
+    ?>
+  </tbody>
+</table>
+
 
 <?php include("pie.php"); ?>

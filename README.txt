@@ -1,1 +1,0 @@
-Esta es la Tarea 2 de Bases de Datos del semestre 2022-2
